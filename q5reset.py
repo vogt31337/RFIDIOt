@@ -61,7 +61,7 @@ if args[0] == 'CONTROL':
                	print
                	card.select()
                	print '  Card ID: ' + card.uid
-               	x= string.upper(raw_input('  *** Warning! This will overwrite TAG! Place defective card and proceed (y/n)? '))
+               	x= string.upper(input('  *** Warning! This will overwrite TAG! Place defective card and proceed (y/n)? '))
                	if x == 'N':
                		os._exit(False)
        		if x == 'Y':

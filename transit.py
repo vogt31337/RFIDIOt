@@ -71,13 +71,13 @@ if not help and ((len(args) > 0 and len(args[0]) == 8) or precoded):
                		card.waitfortag('Waiting for blank tag...')
                		print '  Tag ID: ' + card.data
 			if card.tagtype == card.Q5:
-               			x= string.upper(raw_input('  *** Warning! This will overwrite TAG! Proceed (y/n)? '))
+               			x= string.upper(input('  *** Warning! This will overwrite TAG! Proceed (y/n)? '))
                			if x == 'N':
                        			os._exit(False)
                			if x == 'Y':
                        			break
 			else:
-				x= raw_input('  Incompatible TAG! Hit <RETURN> to retry...')
+				x= input('  Incompatible TAG! Hit <RETURN> to retry...')
 		writetag= True
 		print
 	else:

@@ -1502,7 +1502,7 @@ if Jmrtd:
 	if not FILES:
 		filespath=tempfiles
 		print
-		raw_input('Please replace passport with a JMRTD or vonJeek emulator card and press ENTER when ready...')
+		input('Please replace passport with a JMRTD or vonJeek emulator card and press ENTER when ready...')
 	if (not passport.hsselect('08', 'A') and not passport.hsselect('08', 'B')) or not passport.iso_7816_select_file(passport.AID_MRTD,passport.ISO_7816_SELECT_BY_NAME,'0C'):
 		print "Couldn't select JMRTD!"
 		os._exit(True)

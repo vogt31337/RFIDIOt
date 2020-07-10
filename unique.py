@@ -128,7 +128,7 @@ if (len(args) == 3 and string.upper(args[2]) == 'WRITE') or clone:
         	card.waitfortag('Waiting for blank tag (Q5 or Hitag2)...')
         	print 'Tag ID: ' + card.uid
 	if not clone:
-      		x= string.upper(raw_input('  *** Warning! This will overwrite TAG! Proceed (y/n)? '))
+      		x= string.upper(input('  *** Warning! This will overwrite TAG! Proceed (y/n)? '))
        		if x != 'Y':
         	       	os._exit(False)
 	# allow blank to settle

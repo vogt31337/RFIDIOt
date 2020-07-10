@@ -36,7 +36,7 @@ card.info('formatmifare1k v0.1c')
 card.select()
 print 'Card ID: ' + card.data
 while True:
-	x= string.upper(raw_input('\n*** Warning! This will overwrite all data blocks! Proceed (y/n)? '))
+	x= string.upper(input('\n*** Warning! This will overwrite all data blocks! Proceed (y/n)? '))
 	if x == 'N':
 		os._exit(False)
 	if x == 'Y':

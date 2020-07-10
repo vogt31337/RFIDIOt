@@ -152,7 +152,7 @@ logging= False
 if len(args) > 1:
 	try:
 		logfile= open(args[1],'r')
-		x= string.upper(raw_input('  *** Warning! File already exists! Overwrite (y/n)? '))
+		x= string.upper(input('  *** Warning! File already exists! Overwrite (y/n)? '))
 		if not x == 'Y':
 			os._exit(True)
 		logfile.close()

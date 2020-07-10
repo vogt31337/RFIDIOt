@@ -40,7 +40,7 @@ print '  Data:'
 
 cont = True
 while cont:
-	apdu = raw_input("enter the apdu to send now, send \'close\' to finish :")
+	apdu = input("enter the apdu to send now, send \'close\' to finish :")
 	if apdu == 'close':
 		cont = False
 	else:

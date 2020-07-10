@@ -53,22 +53,22 @@ for x in range(98):
 
 if x > 0:
 	print '\nRead %d blocks' % x
-	raw_input('Remove source tag and hit <CR> to continue...')
+	input('Remove source tag and hit <CR> to continue...')
 	targettype= card.tagtype	
 	while 42:
 		card.waitfortag('Waiting for blank tag...')
 		print 'ID: ' + card.uid
 		if card.tagtype != targettype:
-			raw_input('Invalid tag type! Hit <CR> to continue...')
+			input('Invalid tag type! Hit <CR> to continue...')
 			continue
 		if not card.readblock(0):
-			raw_input('Tag not readable! Hit <CR> to continue...')
+			input('Tag not readable! Hit <CR> to continue...')
 			continue
 		if len(card.data) != len(buffer[0]):
 			print 'Wrong blocksize! (%d / %d)' % (len(buffer[0]),len(card.data)),
-			raw_input(' Hit <CR> to continue...')
+			input(' Hit <CR> to continue...')
 			continue
-		if string.upper(raw_input('*** Warning! Data will be overwritten! Continue (y/n)?')) == 'Y':
+		if string.upper(input('*** Warning! Data will be overwritten! Continue (y/n)?')) == 'Y':
 			break
 		else:
 			os._exit(False)

@@ -106,35 +106,37 @@ PN532_RF=	{
 
 # pn532 functions
 
-# print pn532 firmware details
+
+# print(pn532 firmware details)
 def pn532_print_firmware(data):
 	if not data[:4] == PN532_OK:
-		print '  Bad data from PN532:', data
+		print('  Bad data from PN532:', data)
 	else:
-		print '       IC:', data[4:6]
-		print '      Rev: %d.%d' %  (int(data[6:8],16),int(data[8:10]))
-		print '  Support:',
+		print('       IC:', data[4:6])
+		print('      Rev: %d.%d' %  (int(data[6:8],16),int(data[8:10])))
+		print('  Support:')
 		support= int(data[10:12],16)
 		spacing= ''
 		for n in PN532_FUNCTIONS.keys():
 			if support & n:
-				print spacing + PN532_FUNCTIONS[n]
+				print(spacing + PN532_FUNCTIONS[n])
 				spacing= '           '
-		print
+		print()
 
-# print pn532 antenna status and return number of tags in field
+
+# print(pn532 antenna status and return number of tags in field
 def pn532_print_status(data):
-	print '  Reader PN532 Status:'
-	print '      Last error:', PN532_ERRORS[int(data[4:6])]
-	print '     External RF:', PN532_RF[int(data[6:8],16)]
+	print('  Reader PN532 Status:')
+	print('      Last error:', PN532_ERRORS[int(data[4:6])])
+	print('     External RF:', PN532_RF[int(data[6:8],16)])
 	tags= int(data[8:10],16)
-	print '    TAGS present:', tags
+	print('    TAGS present:', tags)
 	for n in range(tags):
-		print '    Tag number %d:' % (n + 1)
-		print '      Logical number:', data[10 + n * 2:12 + n * 2]
-		print '         RX Baudrate:', PN532_BAUDRATES[int(data[12 + n * 2:14 + n * 2],16)]
-		print '         TX Baudrate:', PN532_BAUDRATES[int(data[14 + n * 2:16 + n * 2],16)]
-		print '          Modulation:', PN532_MODULATION[int(data[16 + n * 2:18 + n * 2],16)]
-		print '      SAM Status:', data[18 + n * 2:20 + n * 2]
-	print
+		print('    Tag number %d:' % (n + 1))
+		print('      Logical number:', data[10 + n * 2:12 + n * 2])
+		print('         RX Baudrate:', PN532_BAUDRATES[int(data[12 + n * 2:14 + n * 2],16)])
+		print('         TX Baudrate:', PN532_BAUDRATES[int(data[14 + n * 2:16 + n * 2],16)])
+		print('          Modulation:', PN532_MODULATION[int(data[16 + n * 2:18 + n * 2],16)])
+		print('      SAM Status:', data[18 + n * 2:20 + n * 2])
+	print()
 	return tags

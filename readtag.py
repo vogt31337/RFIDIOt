@@ -26,28 +26,28 @@ import sys
 import os
 
 try:
-        card= rfidiot.card
+	card= rfidiot.card
 except:
-	print "Couldn't open reader!"
-        os._exit(True)
+	print("Couldn't open reader!")
+	os._exit(-1)
 
 card.info('readtag v0.1f')
 card.select()
-print '\nID: ' + card.uid
-print '  Data:'
+print('\nID: ' + card.uid)
+print('  Data:')
 
 card.select()
 for x in range(255):
-	print '    Block %02x:' % x,
+	print('    Block %02x:' % x)
 	if card.readblock(x):
-		print card.data,
-		print card.ReadablePrint(card.ToBinary(card.data))
+		print(card.data)
+		print(card.ReadablePrint(card.ToBinary(card.data)))
 	else:
-		print 'read error: %s, %s' % (card.errorcode, card.ISO7816ErrorCodes[card.errorcode])
+		print('read error: %s, %s' % (card.errorcode, card.ISO7816ErrorCodes[card.errorcode]))
 
-print '\n    Total blocks: ',
-print x
+print('\n    Total blocks: ')
+print(x)
 if x > 0:
-	os._exit(False)
+	os._exit(0)
 else:
-	os._exit(True)
+	os._exit(-1)
